@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clayton Murule - Personal Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #080808;
+            color: #fff;
+            height: 100%;
+        }
+        .video-section {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            width: 100%;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2; /* Video is behind everything */
+        }
+
+         .watermark {
+            position: absolute;
+            top: 70%;
+            left: 70%;
+            transform: translate(-50%, -50%) rotate(-45deg); /* Rotates the watermark diagonally */
+            font-size: 48px; /* Adjust font size */
+            color: rgba(255, 255, 255, 0.418); /* Semi-transparent white color */
+            font-family: 'Arial', sans-serif;
+            z-index: -1; /* Puts the watermark behind the content, but in front of the video */
+            pointer-events: none; /* Ensures it's not clickable */
+        }
+
+         .content {
+            position: relative;
+            z-index: 1; /* Ensures the text is in front of the watermark */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer {
+            height: 100px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+        /* Header */
+        #header {
+          width: 100%;
+          height: 100vh;
+          background-image: url(images/Mopar.jpeg);
+          background-size: cover;
+          background-position: center;
+          position: relative; /* This is needed for absolute positioning */
+        }
+        .container {
+            padding: 10px 10%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+       /* Navigation menu styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            position: absolute; /* Make the position absolute */
+            top: 10px; /* Position it closer to the top */
+            right: 10px; /* Align it to the right */
+        }
+
+         nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #dddbdf;
+            font-size: 18px;
+            position: relative;
+        }
+
+         nav ul li a:hover {
+            color: #9919e2;
+        }
+
+        .logo {
+            width: 260px;
+        }
+        #logo-video {
+            width: 230px; /* Adjust width as necessary */
+            height: auto;
+            display: block;
+            position: absolute;
+            top: 10px;  /* Moves the video down from the top */
+            left: 10px; /* Moves the video to the left */
+        }
+
+        .header-text {
+            position: absolute; /* Position it relative to the container */
+            bottom: 20px; /* Position it near the bottom */
+            left: 20px; /* Position it to the left */
+            font-size: 20px;
+            font-family: fantasy;
+            color: #e0e0e0;
+        }
+
+         .header-text span {
+            color: #a807c9;
+        }
+
+         .header-text p {
+            font-size: 20px;
+            color: #a807c9;
+            text-decoration: underline;
+        }
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            color: #e1dfe2;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-col-1 {
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .about-col-2 {
+            flex-basis: 60%;
+            color: #b581d3;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 14px;
+            cursor: progress;
+            position: relative;
+        }
+
+        .tab-links.active-link::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: #00c3ff;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        /* Social Media */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        .social-links a {
+            color: #e3edf0;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-links a:hover {
+            color: #22e4f1;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .about-col-1, .about-col-2 {
+                flex-basis: 100%;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div id="header">
+        <div class="container">
+            <nav>
+             <video id="logo-video" autoplay loop muted>
+                <source src="video/dream.mp4" type="video/mp4">
+             </video>
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Entrepreneur</p>
+                <h1>Hi, I'm <span>Clayton</span><br>From Kenya</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" style="position: relative; overflow: hidden;">
+        <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="video/smoke.mp4" type="video/mp4">
+        </video>
+        <div class="watermark">ItsJustKlay☁</div>
+        <div class="container">
+            <h1 class="subtitle">About Me</h1>
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/who..jpg" alt="Clayton">
+                </div>
+                <div class="about-col-2">
+                    <h3>I'm Clayton Murule</h3>
+                    <p>I am passionate about web development and Entrepreneurship. My focus is on building innovative projects that challenge my skills.</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills',event)">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience',event)">Experience</p>
+                        <p class="tab-links" onclick="opentab('education',event)">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><strong>Web Development:</strong> HTML, CSS, JavaScript</li>
+                            <li><strong>App Development:</strong> Android/IOS</li>
+                            <li><strong>Entrepreneur:</strong> 🤵</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><strong>2022-Present:</strong> Maseno University, ICT</li>
+                            <li><strong>2022-Present:</strong> Analysis and refining Srategy</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><strong>2022-Present:</strong> Maseno University</li>
+                            <li><strong>2017-2022:</strong> Utumishi Boys Academy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Section -->
+    <div id="contact">
+        <div class="container">
+            <h2>Contact & Social Media</h2>
+            <p>Connect with me on the following platforms:</p>
+            <ul class="social-links">
+                <li><a href="https://www.youtube.com/@drive-kl" target="_blank">Youtube</a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+                <li><a href="https://github.com/dashboard" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const tabLinks = document.querySelectorAll('.tab-links');
+        const tabContents = document.querySelectorAll('.tab-contents');
+
+        function opentab(tabname, event) {
+            tabLinks.forEach(link => link.classList.remove('active-link'));
+            tabContents.forEach(content => content.classList.remove('active-tab'));
+            event.currentTarget.classList.add('active-link');
+            document.getElementById(tabname).classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
