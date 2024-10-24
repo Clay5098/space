@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clayton Murule's personal portfolio showcasing web development projects and services.">
+    <meta name="keywords" content="Clayton Murule, portfolio, web development, SEO, personal branding">
+    <title>Clayton Murule - Personal Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #080808;
+            color: #fff;
+            height: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+
+        .video-section {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            width: 100%;
+        }
+        .full-page-section {
+            position: relative;
+            height: 100vh; /* Full viewport height for each section */
+            width: 100%;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire screen */
+            z-index: -1; /* Places the video behind all content */
+            opacity: 0.7; /* Optional: Adds slight transparency to the video */
+        }
+        .watermark {
+            position: relative;
+            top: 80%;
+            left: 75%;
+            transform: translate(-50%, -50%) rotate(-45deg); /* Rotates the watermark diagonally */
+            font-size: 48px; /* Adjust font size */
+            color: rgba(255, 255, 255, 0.418); /* Semi-transparent white color */
+            font-family: 'Arial', sans-serif;
+            z-index: 1; /* Puts the watermark behind the content, but in front of the video */
+            pointer-events: none; /* Ensures it's not clickable */
+        }
+        .content {
+            position: relative;
+            z-index: 2; /* Ensures the text is in front of the watermark */
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .project-section {
+            overflow: hidden;
+            position: relative;
+        }
+
+        footer {
+            height: 100px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            height: 100vh;
+            background-image: url(images/Mopar.jpeg);
+            background-size: cover;
+            background-position: center;
+            position: relative; /* This is needed for absolute positioning */
+        }
+
+        .container {
+            padding: 10px 10%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Navigation menu styling */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            position: absolute; /* Make the position absolute */
+            top: 10px; /* Position it closer to the top */
+            right: 10px; /* Align it to the right */
+        }
+
+        nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #dddbdf;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #9919e2;
+        }
+
+        .logo {
+            width: 260px;
+        }
+
+        #logo-video {
+            width: 230px; /* Adjust width as necessary */
+            height: auto;
+            display: block;
+            position: absolute;
+            top: 10px;  /* Moves the video down from the top */
+            left: 10px; /* Moves the video to the left */
+        }
+
+        .header-text {
+            position: absolute; /* Position it relative to the container */
+            bottom: 20px; /* Position it near the bottom */
+            left: 20px; /* Position it to the left */
+            font-size: 20px;
+            font-family: fantasy;
+            color: #e0e0e0;
+        }
+
+        .header-text span {
+            color: #a807c9;
+        }
+
+        .header-text p {
+            font-size: 20px;
+            color: #a807c9;
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            color: #e1dfe2;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-col-1 {
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .about-col-2 {
+            flex-basis: 60%;
+            color: #b581d3;
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 14px;
+            cursor: pointer; /* Change to pointer for better UX */
+            position: relative;
+        }
+
+        .tab-links.active-link::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: #00c3ff;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        .service-item ul {
+            list-style-type: disc; 
+            padding-left: 20px; /* Add some left padding for indentation */
+            color: #696767; /* Adjust the text color if necessary */
+        }
+
+        .service-item ul li {
+            margin-bottom: 10px; /* Add space between list items */
+        } 
+
+        .service-item img {
+            width: 100%; /* Ensures the image fits within the service item */
+            max-width: 440px; /* Adjust this value to set a maximum size */
+            height: auto; /* Keeps the aspect ratio */
+            border-radius: 10px; /* Adds rounded corners */
+            margin-bottom: 15px; /* Space between image and text */
+        }
+
+        /* Social Media */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        .social-links a {
+            color: #e3edf0;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .social-links a:hover {
+            color: #22e4f1;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .about-col-1, .about-col-2 {
+                flex-basis: 100%;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+
+            .header-text {
+                font-size: 18px; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <video id="logo-video" autoplay loop muted>
+                        <source src="video/dream.mp4" type="video/mp4">
+                    </video>
+                    <ul>
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-text">
+                    <p>Entrepreneur</p>
+                    <h1>Hi, I'm <span>Clayton</span><br>From Kenya</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <div id="about" style="position: relative; overflow: hidden;">
+            <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="video/smoke.mp4" type="video/mp4">
+            </video>
+            <div id="about" class="section full-page-section">
+                <h1 class="subtitle" style="color: #9919e2;">About Me</h1>
+                <br><br>
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="images/who..jpg" alt="Clayton">
+                    </div>
+                    <div class="about-col-2">
+                        <h3>I'm Clayton Murule</h3>
+                        <p>I am passionate about web development and Entrepreneurship. My focus is on building innovative projects that challenge my skills.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills',event)">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience',event)">Experience</p>
+                            <p class="tab-links" onclick="opentab('education',event)">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <div class="service-item">
+                                <h4>Web Development</h4>
+                                <ul>
+                                    <li>HTML, CSS, JavaScript</li>
+                                    <li>React.js</li>
+                                    <li>Node.js</li>
+                                </ul>
+                            </div>
+                            <div class="service-item">
+                                <h4>Graphic Design</h4>
+                                <ul>
+                                    <li>Adobe Photoshop</li>
+                                    <li>Illustrator</li>
+                                    <li>Figma</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <h4>Experience</h4>
+                            <p>I have worked with various clients on web development projects and gained experience in creating interactive and responsive websites.</p>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <h4>Education</h4>
+                            <p>I hold a degree in Computer Science from the University of Nairobi, where I developed my skills in programming and software development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section id="services" style="position: relative; overflow: hidden;">
+            <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="video/smoke.mp4" type="video/mp4">
+            </video>
+            <div class="watermark">ItsJustKlay☁</div>
+        <section id="services">
+            <div id="services" class="section full-page-section">
+                <br>
+                <h1 class="subtitle" style="color: #9919e2;">My Services</h1><br>
+                <div class="row">
+                    <div class="about-col-1">
+                        <div class="service-item">
+                            <h4 style="color: #22e4f1;">Web Development</h4>
+                            <br>
+                            <img src="images/webdev.png" alt="Web Development">
+                            <p>I offer professional web development services, creating dynamic and responsive websites tailored to your needs.</p>
+                        </div>
+                    </div>
+                    <div class="about-col-1">
+                        <div class="service-item">
+                            <h4 style="color: #22e4f1;">Graphic Design</h4>
+                            <br>
+                            <img src="images/Anime.jpeg" alt="Graphic Design">
+                            <p>My graphic design services will help you establish a strong visual presence for your brand.</p>
+                        </div>
+                    </div>
+                    <div class="about-col-1">
+                        <div class="service-item">
+                            <h4 style="color: #22e4f1;">SEO Services</h4>
+                            <br>
+                            <img src="images/SEO.jpeg" alt="SEO Services">
+                            <p>Enhance your website's visibility on search engines and reach more potential customers through effective SEO strategies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </section>
+        <br><br><br><br><br><br>
+        <!-- Portfolio Section -->
+        <section id="portfolio" style="position: relative; overflow: hidden;">
+            <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="video/smoke.mp4" type="video/mp4">
+            </video>
+            <div id="portfolio" class="section full-page-section">
+                <br><br>
+                <h1 class="subtitle" style="color: #9919e2;">My Portfolio</h1>
+                <br>
+                <div class="row">
+                    <div class="about-col-1">
+                        <div class="service-item">
+                            <h4 style="color: #00c3ff;">Project 1</h4>
+                            <br>
+                            <p>An ebook to about my mom's life and mine.<br>
+                            A poetry book to be precise. Written by me.<br></p>
+                            <br>
+                            <img src="images/project 1.png" alt="Project 1 Screenshot" />
+                        </div>
+                    </div>
+                    <div class="about-col-1">
+                        <div class="service-item">
+                            <h4 style="color: #22e4f1;">project 2</h4>
+                            <br>
+                            <p>A portfolio website showcasing my work and skills.<br>
+                            And also my experiences.</p>
+                            <br>
+                            <img src="images/project 2.png
+                            " alt="Project 2 Screenshot" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h1 class="subtitle" style="color: #9919e2;">Contact Me</h1>
+                <br>
+                <p>If you would like to get in touch, feel free to reach out via social media or email.</p>
+                <ul class="social-links">
+                    <li><a href="https://www.youtube.com/@drive-kl" target="_blank">youtube</a></li>
+                    <li><a href="https://github.com/yourprofile" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Clayton Murule. All Rights Reserved.</p>
+    </footer>
+    <!-- Background Video -->
+    <video autoplay loop muted class="background-video">
+    <source src="video/smoke.mp4" type="video/mp4">
+    </video>
+
+    <script>
+        function opentab(tabName, evt) {
+            var i, tabcontents, tablinks;
+            tabcontents = document.getElementsByClassName("tab-contents");
+            for (i = 0; i < tabcontents.length; i++) {
+                tabcontents[i].classList.remove("active-tab"); // Hide all tabs
+            }
+            tablinks = document.getElementsByClassName("tab-links");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active-link"); // Remove active class from all links
+            }
+            document.getElementById(tabName).classList.add("active-tab"); // Show current tab
+            evt.currentTarget.classList.add("active-link"); // Add active class to current link
+        }
+    </script>
+</body>
+</html>
