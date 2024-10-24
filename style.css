@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #080808;
+    color: #fff;
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+.video-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+}
+.full-page-section {
+    position: relative;
+    height: 100vh; /* Full viewport height for each section */
+    width: 100%;
+}
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Places the video behind all content */
+    opacity: 0.7; /* Optional: Adds slight transparency to the video */
+}
+.watermark {
+    position: relative;
+    top: 80%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotate(-45deg); /* Rotates the watermark diagonally */
+    font-size: 48px; /* Adjust font size */
+    color: rgba(255, 255, 255, 0.418); /* Semi-transparent white color */
+    font-family: 'Arial', sans-serif;
+    z-index: 1; /* Puts the watermark behind the content, but in front of the video */
+    pointer-events: none; /* Ensures it's not clickable */
+}
+.content {
+    position: relative;
+    z-index: 2; /* Ensures the text is in front of the watermark */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.project-section {
+    overflow: hidden;
+    position: relative;
+}
+
+footer {
+    height: 100px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* Header */
+header {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/Mopar.jpeg);
+    background-size: cover;
+    background-position: center;
+    position: relative; /* This is needed for absolute positioning */
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Navigation menu styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    position: absolute; /* Make the position absolute */
+    top: 10px; /* Position it closer to the top */
+    right: 10px; /* Align it to the right */
+}
+
+nav ul li {
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #dddbdf;
+    font-size: 18px;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: #9919e2;
+}
+
+.logo {
+    width: 260px;
+}
+
+#logo-video {
+    width: 230px; /* Adjust width as necessary */
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 10px;  /* Moves the video down from the top */
+    left: 10px; /* Moves the video to the left */
+}
+
+.header-text {
+    position: absolute; /* Position it relative to the container */
+    bottom: 20px; /* Position it near the bottom */
+    left: 20px; /* Position it to the left */
+    font-size: 20px;
+    font-family: fantasy;
+    color: #e0e0e0;
+}
+
+.header-text span {
+    color: #a807c9;
+}
+
+.header-text p {
+    font-size: 20px;
+    color: #a807c9;
+    text-decoration: underline;
+}
+
+/* About Section */
+#about {
+    padding: 80px 0;
+    color: #e1dfe2;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1 {
+    flex-basis: 35%;
+}
+
+.about-col-1 img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2 {
+    flex-basis: 60%;
+    color: #b581d3;
+}
+
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links {
+    margin-right: 50px;
+    font-size: 14px;
+    cursor: pointer; /* Change to pointer for better UX */
+    position: relative;
+}
+
+.tab-links.active-link::after {
+    content: '';
+    width: 50%;
+    height: 3px;
+    background: #00c3ff;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-contents {
+    display: none;
+}
+
+.tab-contents.active-tab {
+    display: block;
+}
+
+.service-item ul {
+    list-style-type: disc; 
+    padding-left: 20px; /* Add some left padding for indentation */
+    color: #696767; /* Adjust the text color if necessary */
+}
+
+.service-item ul li {
+    margin-bottom: 10px; /* Add space between list items */
+} 
+
+.service-item img {
+    width: 100%; /* Ensures the image fits within the service item */
+    max-width: 440px; /* Adjust this value to set a maximum size */
+    height: auto; /* Keeps the aspect ratio */
+    border-radius: 10px; /* Adds rounded corners */
+    margin-bottom: 15px; /* Space between image and text */
+}
+
+/* Social Media */
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+.social-links a {
+    color: #e3edf0;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.social-links a:hover {
+    color: #22e4f1;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .about-col-1, .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .header-text {
+        font-size: 18px; /* Adjust for smaller screens */
+    }
+}
