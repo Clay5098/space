@@ -148,7 +148,10 @@ nav ul li a:hover {
     padding: 80px 0;
     color: #e1dfe2;
 }
-
+ .Email{
+    text-decoration: underline;
+    color: #696767;
+}
 .row {
     display: flex;
     justify-content: space-between;
