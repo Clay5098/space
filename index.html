@@ -29,35 +29,42 @@
             height: 100vh; /* Full viewport height */
             width: 100%;
         }
-
+        .full-page-section {
+            position: relative;
+            height: 100vh; /* Full viewport height for each section */
+            width: 100%;
+        }
         .background-video {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -2; /* Video is behind everything */
+            object-fit: cover; /* Ensures the video covers the entire screen */
+            z-index: -1; /* Places the video behind all content */
+            opacity: 0.7; /* Optional: Adds slight transparency to the video */
         }
-
         .watermark {
-            position: absolute;
-            top: 70%;
-            left: 70%;
+            position: relative;
+            top: 80%;
+            left: 75%;
             transform: translate(-50%, -50%) rotate(-45deg); /* Rotates the watermark diagonally */
             font-size: 48px; /* Adjust font size */
             color: rgba(255, 255, 255, 0.418); /* Semi-transparent white color */
             font-family: 'Arial', sans-serif;
-            z-index: -1; /* Puts the watermark behind the content, but in front of the video */
+            z-index: 1; /* Puts the watermark behind the content, but in front of the video */
             pointer-events: none; /* Ensures it's not clickable */
         }
-
         .content {
             position: relative;
-            z-index: 1; /* Ensures the text is in front of the watermark */
+            z-index: 2; /* Ensures the text is in front of the watermark */
             color: white;
             text-align: center;
             padding: 20px;
+        }
+        .project-section {
+            overflow: hidden;
+            position: relative;
         }
 
         footer {
@@ -256,6 +263,14 @@
                 font-size: 18px; /* Adjust for smaller screens */
             }
         }
+        .custom-link {
+                color: #ff5733; /* Change this to your desired color */
+                text-decoration: none; /* Removes underline */
+        }
+
+        .custom-link:hover {
+                text-decoration: underline; /* Underline on hover */
+        }
     </style>
 </head>
 <body>
@@ -288,9 +303,9 @@
             <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
                 <source src="video/smoke.mp4" type="video/mp4">
             </video>
-            <div class="watermark">ItsJustKlay☁</div>
-            <div class="container">
-                <h1 class="subtitle">About Me</h1>
+            <div id="about" class="section full-page-section">
+                <h1 class="subtitle" style="color: #9919e2;">About Me</h1>
+                <br><br>
                 <div class="row">
                     <div class="about-col-1">
                         <img src="images/who..jpg" alt="Clayton">
@@ -335,39 +350,54 @@
         </div>
 
         <!-- Services Section -->
+        <section id="services" style="position: relative; overflow: hidden;">
+            <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="video/smoke.mp4" type="video/mp4">
+            </video>
+            <div class="watermark">ItsJustKlay☁</div>
         <section id="services">
-            <div class="container">
-                <h1 class="subtitle">My Services</h1><br>
+            <div id="services" class="section full-page-section">
+                <br>
+                <h1 class="subtitle" style="color: #9919e2;">My Services</h1><br>
                 <div class="row">
                     <div class="about-col-1">
                         <div class="service-item">
-                            <h4>Web Development</h4>
+                            <h4 style="color: #22e4f1;">Web Development</h4>
+                            <br>
                             <img src="images/webdev.png" alt="Web Development">
                             <p>I offer professional web development services, creating dynamic and responsive websites tailored to your needs.</p>
                         </div>
                     </div>
                     <div class="about-col-1">
                         <div class="service-item">
-                            <h4>Graphic Design</h4>
+                            <h4 style="color: #22e4f1;">Graphic Design</h4>
+                            <br>
                             <img src="images/Anime.jpeg" alt="Graphic Design">
                             <p>My graphic design services will help you establish a strong visual presence for your brand.</p>
                         </div>
                     </div>
                     <div class="about-col-1">
                         <div class="service-item">
-                            <h4>SEO Services</h4>
+                            <h4 style="color: #22e4f1;">SEO Services</h4>
+                            <br>
                             <img src="images/SEO.jpeg" alt="SEO Services">
                             <p>Enhance your website's visibility on search engines and reach more potential customers through effective SEO strategies.</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <br><br>
         </section>
-
+        <br><br><br><br><br><br>
         <!-- Portfolio Section -->
-        <section id="portfolio">
-            <div class="container">
-                <h1 class="subtitle">My Projects</h1>
+        <section id="portfolio" style="position: relative; overflow: hidden;">
+            <video autoplay loop muted style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <source src="video/smoke.mp4" type="video/mp4">
+            </video>
+            <div id="portfolio" class="section full-page-section">
+                <br><br>
+                <h1 class="subtitle" style="color: #9919e2;">My Portfolio</h1>
+                <br>
                 <div class="row">
                     <div class="about-col-1">
                         <div class="service-item">
@@ -375,6 +405,8 @@
                             <br>
                             <p>An ebook to about my mom's life and mine.<br>
                             A poetry book to be precise. Written by me.<br></p>
+                            <br>
+                            <img src="images/project 1.png" alt="Project 1 Screenshot" />
                         </div>
                     </div>
                     <div class="about-col-1">
@@ -383,17 +415,20 @@
                             <br>
                             <p>A portfolio website showcasing my work and skills.<br>
                             And also my experiences.</p>
+                            <br>
+                            <img src="images/project 2.png
+                            " alt="Project 2 Screenshot" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- Contact Section -->
         <section id="contact">
             <div class="container">
-                <h1 class="subtitle">Contact Me</h1>
-                <p>If you would like to get in touch, feel free to reach out via social media or email.</p>
+                <h1 class="subtitle" style="color: #9919e2;">Contact Me</h1>
+                <br>
+                <p>If you would like to get in touch, feel free to reach out via social media.</p>
                 <ul class="social-links">
                     <li><a href="https://www.youtube.com/@drive-kl" target="_blank">youtube</a></li>
                     <li><a href="https://github.com/yourprofile" target="_blank">GitHub</a></li>
@@ -404,8 +439,13 @@
     </main>
 
     <footer>
+        <a href="https://wa.me/+254757164258" class="custom-link" target="_blank">Chat with me on WhatsApp</a>
         <p>© 2024 Clayton Murule. All Rights Reserved.</p>
     </footer>
+    <!-- Background Video -->
+    <video autoplay loop muted class="background-video">
+    <source src="video/smoke.mp4" type="video/mp4">
+    </video>
 
     <script>
         function opentab(tabName, evt) {
